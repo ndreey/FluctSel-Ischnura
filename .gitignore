@@ -1,4 +1,10 @@
-tutorial/
+tutorial/.*
+tutorial/benchmarks
+tutorial/data
+tutorial/logs
+tutorial/results
+tutorial/resources
+*.zip
 .snakemake/
 results/
 data/

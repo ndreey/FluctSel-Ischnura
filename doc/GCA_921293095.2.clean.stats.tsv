@@ -1,0 +1,2 @@
+n_scaffolds	n_contigs	scaf_bp	contig_bp	gap_pct	scaf_N50	scaf_L50	ctg_N50	ctg_L50	scaf_N90	scaf_L90	ctg_N90	ctg_L90	scaf_max	ctg_max	scaf_n_gt50K	scaf_pct_gt50K	gc_avg	gc_std
+111	360	1722755404	1722675304	0.005	7	123641648	36	13055916	13	94743817	140	3332849	170575982	82018275	62	99.913	0.38487	0.04482

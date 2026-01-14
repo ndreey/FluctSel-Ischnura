@@ -4,19 +4,19 @@ samples: config/samples.tsv
 
 units: config/units.tsv
 
-dataset: "init-test"
+dataset: "Hoje-43samp-test"
 
 #===================== Reference Configuration ========================#
 
-chunk_size: 170575982
+chunk_size: 200000000
 
 reference:
   name: "ioIscEleg" 
   fasta: "ref-genome/GCA_921293095.2.clean.fasta"
   mito: ["mitochondrion"]
-  sex-linked: ["X"]
+  sex-linked: []
   exclude: []
-  min_size: 1000000
+  min_size: 5000
 
 ancestral:
 
@@ -28,7 +28,7 @@ excl_pca-admix: []
 
 #====================== Analysis Selection ============================#
 
-populations: []
+populations: ["Hoje_A_14", "Lomma_Kyrkdamm"]
 
 analyses:
   # mapping options
@@ -40,7 +40,7 @@ analyses:
   repeatmasker:
     bed:
     local_lib:
-    build_lib:
+    build_lib: true
   extreme_depth: true
   dataset_missing_data:
   population_missing_data:
@@ -50,31 +50,31 @@ analyses:
   damageprofiler: true
   mapdamage_rescale:
   # population genomic analyses
-  estimate_ld:
-  ld_decay: true
+  estimate_ld: false  ## <- for now
+  ld_decay: false     ## <- for now
   pca_pcangsd: true
   admix_ngsadmix: true
   relatedness:
-    ibsrelate_ibs:
-    ibsrelate_sfs:
-    ngsrelate_ibsrelate-only: true
-    ngsrelate_freqbased:
+    ibsrelate_ibs: false
+    ibsrelate_sfs: false
+    ngsrelate_ibsrelate-only: false  ## <- for now
+    ngsrelate_freqbased: false
   1dsfs:
   1dsfs_boot:
   2dsfs:
   2dsfs_boot:
-  thetas_angsd: true
-  heterozygosity_angsd: true
+  thetas_angsd: false     ## <- for now
+  heterozygosity_angsd: false ## <- for now
   fst_angsd:
-    populations: true
+    populations: false ## <- for now
     individuals:
-  inbreeding_ngsf-hmm: true
-  ibs_matrix: true
+  inbreeding_ngsf-hmm: false ## <- for now
+  ibs_matrix: false ## <- for now
   pop_allele_freqs: true
 
 #==================== Downsampling Configuration ======================#
 
-subsample_dp: []
+subsample_dp: []      ### <- leaving this empty disables subsample.
 
 subsample_by: "sitefilt" # three options: unfilt, mapqbaseq, sitefilt; sitefilt recommended (subsamples bams to `subsample_dp` within filtered regions)
 redo_depth_filts: false # has no effect when `subsample_by` == "sitefilt"

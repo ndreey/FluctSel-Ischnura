@@ -140,21 +140,22 @@ mamba create -n popglen -c conda-forge -c bioconda snakemake=9.13.7 snakedeploy 
 
 ### 9. Run PopGLen
 Now you're ready to run the pipeline. This takes about 30 minutes (or up to 1 hour if you need to download container images).
+I had issues with `screen` so i recommend you use `tmux` instead.
 
 ```bash
-# Start a screen session (so the pipeline keeps running if your terminal closes)
-screen -S snakemake
+# Load the module
+module load tmux/3.4
 
-# Activate the environment
-mamba activate popglen
+# Start a new session with a name
+tmux new -s snakemake
 
-# Run the pipeline with YOUR profile and config
+# Run your command
 snakemake --profile profiles/dardel-sofie --configfile config/config-sofie.yaml
 ```
-
 You can now detach from screen and have snakemake running in the background:
 
-- Detach from screen: Press `Ctrl+A`, then press `D`
-- Check if it's still running: `screen -ls`
-- Reattach to check progress: `screen -r snakemake`
+- Detach from screen: Press `Ctrl+B`, then press `D`
+- Check if it's still running: `tmux ls`
+- Reattach to check progress: `tmux attach -t snakemake`
+- Kill the session: `kill-session -t snakemake`
 

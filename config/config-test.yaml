@@ -33,10 +33,10 @@ populations: ["Hoje_A_14", "Lomma_Kyrkdamm"]
 analyses:
   # mapping options
   mapping:
-    historical_only_collapsed: true
+    historical_only_collapsed: false
     historical_collapsed_aligner: "aln"
   # sites file filters
-  pileup-mappability: true
+  pileup-mappability: false       # If repeatmodel works, skip  this
   repeatmasker:
     bed:
     local_lib:
@@ -47,17 +47,17 @@ analyses:
   # quality control
   qualimap: true
   ibs_ref_bias: true
-  damageprofiler: true      ## <- should be set to false for modern, causes errors
+  damageprofiler: false      ## <- should be set to false for modern, causes errors
   mapdamage_rescale:
-  # population genomic analyses
+  # population genomic analyses        # make all false for first run
   estimate_ld: false  ## <- for now
   ld_decay: false     ## <- for now
-  pca_pcangsd: true
-  admix_ngsadmix: true
+  pca_pcangsd: false
+  admix_ngsadmix: false
   relatedness:
     ibsrelate_ibs: false
     ibsrelate_sfs: false
-    ngsrelate_ibsrelate-only: false  ## <- for now
+    ngsrelate_ibsrelate-only: false  ## <- for now (better /quicker than pca (kinship looks like what we expect)) (OBS! kinship ~ 0.3)
     ngsrelate_freqbased: false
   1dsfs:
   1dsfs_boot:
@@ -70,7 +70,7 @@ analyses:
     individuals:
   inbreeding_ngsf-hmm: false ## <- for now
   ibs_matrix: false ## <- for now
-  pop_allele_freqs: true
+  pop_allele_freqs: false
 
 #==================== Downsampling Configuration ======================#
 
@@ -127,7 +127,7 @@ params:
     MarkDuplicates: "--REMOVE_DUPLICATES true --OPTICAL_DUPLICATE_PIXEL_DISTANCE 2500"
   damageprofiler:
     profile_modern: false
-  genmap:
+  genmap:               # map_thresh 1 is very extreme and K depends on sequence length
     K: "30"
     E: "2"
     map_thresh: 1
@@ -184,7 +184,7 @@ params:
     win_step: 10000
     minsites: 1000
   ngsadmix:
-    kvalues: [1,2,3,4,5]
+    kvalues: [1,2,3]     # converges like Pecnerova paper
     reps: 100
     minreps: 20
     thresh: 2

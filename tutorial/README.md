@@ -135,7 +135,7 @@ Create the mamba environment with all required packages:
 
 ```bash
 # Create mamba environment (-n names the environment, -c channels to use, -y auto selects yes to all prompts)
-mamba create -n popglen -c conda-forge -c bioconda snakemake=9.13.7 snakedeploy singularity snakemake-executor-plugin-slurm -y
+mamba create -n popglen -c conda-forge -c bioconda snakemake snakedeploy singularity snakemake-executor-plugin-slurm -y
 ```
 
 ### 9. Run PopGLen
@@ -148,6 +148,9 @@ module load tmux/3.4
 
 # Start a new session with a name
 tmux new -s snakemake
+
+# Activate popglen
+mamba activate popglen
 
 # Run your command
 snakemake --profile profiles/dardel-sofie --configfile config/config-sofie.yaml
